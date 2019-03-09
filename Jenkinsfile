@@ -9,9 +9,9 @@ pipeline {
                 sh "java -jar BuildTools.jar"
             }
         }
-        stage('archive') { 
+        stage('version') { 
            steps {
-               
+               sh "java -version"
             } 
        }
     } 
