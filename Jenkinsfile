@@ -9,11 +9,16 @@ pipeline {
                 sh "java -jar BuildTools.jar --rev 1.8.8"
             }
         }
-        stage('archive') { 
+        stage('version') { 
            steps {
                sh "ls"
-               archiveArtifacts artifacts: 'spigot*.jar', 'craftbukkit*.jar'
+               sh "java --version"
             } 
-       }
-    } 
+       }   
+    }
+    post {
+        always {            
+            archiveArtifacts artifacts: '*.jar'
+        }
+    }
 }
